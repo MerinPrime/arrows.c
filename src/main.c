@@ -15,14 +15,12 @@
 #include <stb_ds.h>
 
 #include "arrow_type.h"
+#include "chunk.h"
 
 #define UNLOAD_TIMER_MAX 5
 #define MAX_TPS 10000
 #define UI_BACKGROUND_ALPHA 0.9f
-
-#define CHUNK_SIZE 16
 #define CAMERA_SPEED 2.0f
-
 #define DEFAULT_ZOOM 16
 
 #ifndef DEBUG
