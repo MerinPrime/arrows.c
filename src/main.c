@@ -584,165 +584,124 @@ void map_update(map_t *map) {
 #define DARK_YELLOW (Color){0x99, 0x66, 0x00, 0xff}
 
 enum InputEvent {
-    ARROW_SET,
-    ARROW_NORTH,
-    ARROW_SOUTH,
-    ARROW_WEST,
-    ARROW_EAST,
-    ARROW_FLIP,
-    ARROW_INTERACT,
-    ARROW_REMOVE,
-    ARROW_MENU,
-    SELECT,
-    SELECTED_REMOVE,
-    SELECTED_COPY,
-    CLIPBOARD_PASTE,
-    HOTBAR1,
-    HOTBAR2,
-    HOTBAR3,
-    HOTBAR4,
-    HOTBAR5,
-    HOTBAR_DESELECT,
-    HOTBAR_PREVIOUS,
-    HOTBAR_NEXT,
-    PIPETTE,
-    MOVE,
-    MOVE_FORWARD,
-    MOVE_BACK,
-    MOVE_LEFT,
-    MOVE_RIGHT,
-    CENTER,
-    ZOOM_IN,
-    ZOOM_OUT,
-    ZOOM_RESET,
-    SIGNALS_REMOVE,
-    PAUSE,
-    MAP_MENU,
-    TICK_STEP,
-};
-
-KeyboardKey keybindings[] = {
-    [ARROW_NORTH] = KEY_W,
-    [ARROW_SOUTH] = KEY_S,
-    [ARROW_WEST] = KEY_A,
-    [ARROW_EAST] = KEY_D,
-    [ARROW_FLIP] = KEY_F,
-    [ARROW_REMOVE] = KEY_R,
-    [ARROW_MENU] = KEY_TAB,
-    [SELECT] = KEY_E,
-    [SELECTED_REMOVE] = KEY_BACKSPACE,
-    [SELECTED_COPY] = KEY_C,
-    [CLIPBOARD_PASTE] = KEY_V,
-    [HOTBAR1] = KEY_ONE,
-    [HOTBAR2] = KEY_TWO,
-    [HOTBAR3] = KEY_THREE,
-    [HOTBAR4] = KEY_FOUR,
-    [HOTBAR5] = KEY_FIVE,
-    [HOTBAR_DESELECT] = KEY_GRAVE,
-    [HOTBAR_PREVIOUS] = KEY_Z,
-    [HOTBAR_NEXT] = KEY_X,
-    [PIPETTE] = KEY_Q,
-    [MOVE_FORWARD] = KEY_UP,
-    [MOVE_BACK] = KEY_DOWN,
-    [MOVE_LEFT] = KEY_LEFT,
-    [MOVE_RIGHT] = KEY_RIGHT,
-    [CENTER] = KEY_H,
-    [ZOOM_IN] = KEY_EQUAL,
-    [ZOOM_OUT] = KEY_MINUS,
-    [ZOOM_RESET] = KEY_EQUAL,
-    [SIGNALS_REMOVE] = KEY_N,
-    [PAUSE] = KEY_SPACE,
-    [MAP_MENU] = KEY_ESCAPE,
-    [TICK_STEP] = KEY_ENTER,
-};
-
-MouseButton mouse_bindings[] = {
-    [ARROW_SET] = MOUSE_BUTTON_LEFT,
-    [ARROW_INTERACT] = MOUSE_BUTTON_RIGHT,
-    [MOVE] = MOUSE_BUTTON_MIDDLE,
+    ARROW_NORTH = KEY_W,
+    ARROW_SOUTH = KEY_S,
+    ARROW_WEST = KEY_A,
+    ARROW_EAST = KEY_D,
+    ARROW_FLIP = KEY_F,
+    ARROW_REMOVE = KEY_R,
+    ARROW_MENU = KEY_TAB,
+    SELECT = KEY_E,
+    SELECTED_REMOVE = KEY_BACKSPACE,
+    SELECTED_COPY = KEY_C,
+    CLIPBOARD_PASTE = KEY_V,
+    HOTBAR1 = KEY_ONE,
+    HOTBAR2 = KEY_TWO,
+    HOTBAR3 = KEY_THREE,
+    HOTBAR4 = KEY_FOUR,
+    HOTBAR5 = KEY_FIVE,
+    HOTBAR_DESELECT = KEY_GRAVE,
+    HOTBAR_PREVIOUS = KEY_Z,
+    HOTBAR_NEXT = KEY_X,
+    PIPETTE = KEY_Q,
+    MOVE_FORWARD = KEY_UP,
+    MOVE_BACK = KEY_DOWN,
+    MOVE_LEFT = KEY_LEFT,
+    MOVE_RIGHT = KEY_RIGHT,
+    CENTER = KEY_H,
+    ZOOM_IN = KEY_EQUAL,
+    ZOOM_OUT = KEY_MINUS,
+    ZOOM_RESET = KEY_EQUAL,
+    SIGNALS_REMOVE = KEY_N,
+    PAUSE = KEY_SPACE,
+    MAP_MENU = KEY_ESCAPE,
+    TICK_STEP = KEY_ENTER,
+    ARROW_SET = MOUSE_BUTTON_LEFT,
+    ARROW_INTERACT = MOUSE_BUTTON_RIGHT,
+    CAMERA_MOVE = MOUSE_BUTTON_MIDDLE,
 };
 
 
 void handle_input(map_t *map) {
-    if (IsKeyPressed(keybindings[ARROW_NORTH])) {
+    if (IsKeyPressed(ARROW_NORTH)) {
         printf("key pressed\n");
     }
-    if (IsKeyPressed(keybindings[ARROW_SOUTH])) {
+    if (IsKeyPressed(ARROW_SOUTH)) {
         printf("key pressed\n");
     }
-    if (IsKeyPressed(keybindings[ARROW_WEST])) {
+    if (IsKeyPressed(ARROW_WEST)) {
         printf("key pressed\n");
     }
-    if (IsKeyPressed(keybindings[ARROW_EAST])) {
+    if (IsKeyPressed(ARROW_EAST)) {
         printf("key pressed\n");
     }
-    if (IsKeyPressed(keybindings[ARROW_FLIP])) {
+    if (IsKeyPressed(ARROW_FLIP)) {
         printf("key pressed\n");
     }
-    if (IsKeyPressed(keybindings[ARROW_REMOVE])) {
+    if (IsKeyPressed(ARROW_REMOVE)) {
         printf("key pressed\n");
     }
-    if (IsKeyPressed(keybindings[ARROW_MENU])) {
+    if (IsKeyPressed(ARROW_MENU)) {
         printf("key pressed\n");
     }
-    if (IsKeyPressed(keybindings[SELECT])) {
+    if (IsKeyPressed(SELECT)) {
         printf("key pressed\n");
     }
-    if (IsKeyPressed(keybindings[SELECTED_REMOVE])) {
+    if (IsKeyPressed(SELECTED_REMOVE)) {
         printf("key pressed\n");
     }
-    if (IsKeyPressed(keybindings[SELECTED_COPY])) {
+    if (IsKeyPressed(SELECTED_COPY)) {
         printf("key pressed\n");
     }
-    if (IsKeyPressed(keybindings[CLIPBOARD_PASTE])) {
+    if (IsKeyPressed(CLIPBOARD_PASTE)) {
         printf("key pressed\n");
     }
-    if (IsKeyPressed(keybindings[HOTBAR1])) {
+    if (IsKeyPressed(HOTBAR1)) {
         printf("key pressed\n");
     }
-    if (IsKeyPressed(keybindings[HOTBAR2])) {
+    if (IsKeyPressed(HOTBAR2)) {
         printf("key pressed\n");
     }
-    if (IsKeyPressed(keybindings[HOTBAR3])) {
+    if (IsKeyPressed(HOTBAR3)) {
         printf("key pressed\n");
     }
-    if (IsKeyPressed(keybindings[HOTBAR4])) {
+    if (IsKeyPressed(HOTBAR4)) {
         printf("key pressed\n");
     }
-    if (IsKeyPressed(keybindings[HOTBAR5])) {
+    if (IsKeyPressed(HOTBAR5)) {
         printf("key pressed\n");
     }
-    if (IsKeyPressed(keybindings[HOTBAR_DESELECT])) {
+    if (IsKeyPressed(HOTBAR_DESELECT)) {
         printf("key pressed\n");
     }
-    if (IsKeyPressed(keybindings[HOTBAR_PREVIOUS])) {
+    if (IsKeyPressed(HOTBAR_PREVIOUS)) {
         printf("key pressed\n");
     }
-    if (IsKeyPressed(keybindings[HOTBAR_NEXT])) {
+    if (IsKeyPressed(HOTBAR_NEXT)) {
         printf("key pressed\n");
     }
-    if (IsKeyPressed(keybindings[PIPETTE])) {
+    if (IsKeyPressed(PIPETTE)) {
         printf("key pressed\n");
     }
-    if (IsKeyDown(keybindings[MOVE_FORWARD])) {
+    if (IsKeyDown(MOVE_FORWARD)) {
         settings.camera.y -= CAMERA_SPEED;
     }
-    if (IsKeyDown(keybindings[MOVE_BACK])) {
+    if (IsKeyDown(MOVE_BACK)) {
         settings.camera.y += CAMERA_SPEED;
     }
-    if (IsKeyDown(keybindings[MOVE_LEFT])) {
+    if (IsKeyDown(MOVE_LEFT)) {
         settings.camera.x -= CAMERA_SPEED;
     }
-    if (IsKeyDown(keybindings[MOVE_RIGHT])) {
+    if (IsKeyDown(MOVE_RIGHT)) {
         settings.camera.x += CAMERA_SPEED;
     }
-    if (IsKeyPressed(keybindings[CENTER])) {
+    if (IsKeyPressed(CENTER)) {
         settings.camera = (Vector2) {
             .x = -(float) GetScreenWidth() / 2.0f / settings.zoom,
             .y = -(float) GetScreenHeight() / 2.0f / settings.zoom,
         };
     }
-    if (IsKeyDown(keybindings[ZOOM_IN])) {
+    if (IsKeyDown(ZOOM_IN)) {
         const float screen_center_x = (float) GetScreenWidth() / 2.0f;
         const float screen_center_y = (float) GetScreenHeight() / 2.0f;
         const float dx = screen_center_x / settings.zoom - screen_center_x / (settings.zoom * ZOOM_FACTOR);
@@ -751,7 +710,7 @@ void handle_input(map_t *map) {
         settings.camera.x += dx;
         settings.camera.y += dy;
     }
-    if (IsKeyDown(keybindings[ZOOM_OUT])) {
+    if (IsKeyDown(ZOOM_OUT)) {
         const float screen_center_x = (float) GetScreenWidth() / 2.0f;
         const float screen_center_y = (float) GetScreenHeight() / 2.0f;
         const float dx = screen_center_x / settings.zoom - screen_center_x / (settings.zoom / ZOOM_FACTOR);
@@ -760,24 +719,24 @@ void handle_input(map_t *map) {
         settings.camera.x += dx;
         settings.camera.y += dy;
     }
-    if (IsKeyDown(KEY_LEFT_SHIFT) && IsKeyPressed(keybindings[ZOOM_RESET])) {
+    if (IsKeyDown(KEY_LEFT_SHIFT) && IsKeyPressed(ZOOM_RESET)) {
         settings.zoom = DEFAULT_ZOOM;
     }
-    if (IsKeyPressed(keybindings[SIGNALS_REMOVE])) {
+    if (IsKeyPressed(SIGNALS_REMOVE)) {
         printf("key pressed\n");
     }
-    if (IsKeyPressed(keybindings[PAUSE])) {
+    if (IsKeyPressed(PAUSE)) {
         settings.pause = 1 - settings.pause;
     }
-    if (IsKeyPressed(keybindings[MAP_MENU])) {
+    if (IsKeyPressed(MAP_MENU)) {
         printf("key pressed\n");
     }
 
-    if (IsKeyPressed(keybindings[TICK_STEP])) {
+    if (IsKeyPressed(TICK_STEP)) {
         map_update(map);
     }
 
-    if (IsMouseButtonDown(mouse_bindings[MOVE])) {
+    if (IsMouseButtonDown(CAMERA_MOVE)) {
         Vector2 mouse_position = GetMousePosition();
         Vector2 mouse_bias = {
             mouse_position.x - settings.last_mouse_position.x,
@@ -788,7 +747,7 @@ void handle_input(map_t *map) {
         settings.camera.y -= mouse_bias.y / settings.zoom;
     }
 
-    if (IsMouseButtonReleased(mouse_bindings[ARROW_INTERACT])) {
+    if (IsMouseButtonReleased(ARROW_INTERACT)) {
         const int button_x = (int) roundf(settings.camera.x + settings.last_mouse_position.x / settings.zoom);
         const int button_y = (int) roundf(settings.camera.y + settings.last_mouse_position.y / settings.zoom);
         const arrow_t* arrow = map_get(map, button_x, button_y);
