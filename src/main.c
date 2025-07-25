@@ -737,8 +737,10 @@ void handle_input(map_t *map) {
         settings.camera.x += CAMERA_SPEED;
     }
     if (IsKeyPressed(keybindings[CENTER])) {
-        // TODO: unhardcode position
-        settings.camera = (Vector2){ 0, 0 };
+        settings.camera = (Vector2) {
+            .x = -(float) GetScreenWidth() / 2.0f / settings.zoom,
+            .y = -(float) GetScreenHeight() / 2.0f / settings.zoom,
+        };
     }
     if (IsKeyDown(keybindings[ZOOM_IN])) {
         const float screen_center_x = (float) GetScreenWidth() / 2.0f;
