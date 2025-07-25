@@ -22,6 +22,7 @@
 #define UI_BACKGROUND_ALPHA 0.9f
 #define CAMERA_SPEED 2.0f
 #define DEFAULT_ZOOM 16
+#define ZOOM_FACTOR 1.01f
 
 #ifndef DEBUG
 #define DEBUG 0
@@ -738,20 +739,22 @@ void handle_input(map_t *map) {
         settings.camera = (Vector2){ 0, 0 };
     }
     if (IsKeyDown(keybindings[ZOOM_IN])) {
-        // TODO: unhardcode zoom_factor
-        const float zoom_factor = 1.01;
-        settings.zoom *= zoom_factor;
-
-        settings.camera.x -= (settings.zoom * (zoom_factor - 1)) / 2;
-        settings.camera.y -= (settings.zoom * (zoom_factor - 1)) / 2;
+        const float screen_center_x = (float) GetScreenWidth() / 2.0f;
+        const float screen_center_y = (float) GetScreenHeight() / 2.0f;
+        const float dx = screen_center_x / settings.zoom - screen_center_x / (settings.zoom * ZOOM_FACTOR);
+        const float dy = screen_center_y / settings.zoom - screen_center_y / (settings.zoom * ZOOM_FACTOR);
+        settings.zoom *= ZOOM_FACTOR;
+        settings.camera.x += dx;
+        settings.camera.y += dy;
     }
     if (IsKeyDown(keybindings[ZOOM_OUT])) {
-        // TODO: unhardcode zoom_factor
-        const float zoom_factor = 0.99;
-        settings.zoom *= zoom_factor;
-
-        settings.camera.x += (settings.zoom * (zoom_factor - 1)) / 2;
-        settings.camera.y += (settings.zoom * (zoom_factor - 1)) / 2;
+        const float screen_center_x = (float) GetScreenWidth() / 2.0f;
+        const float screen_center_y = (float) GetScreenHeight() / 2.0f;
+        const float dx = screen_center_x / settings.zoom - screen_center_x / (settings.zoom / ZOOM_FACTOR);
+        const float dy = screen_center_y / settings.zoom - screen_center_y / (settings.zoom / ZOOM_FACTOR);
+        settings.zoom /= ZOOM_FACTOR;
+        settings.camera.x += dx;
+        settings.camera.y += dy;
     }
     if (IsKeyDown(KEY_LEFT_SHIFT) && IsKeyPressed(keybindings[ZOOM_RESET])) {
         settings.zoom = DEFAULT_ZOOM;
