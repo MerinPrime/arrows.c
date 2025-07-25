@@ -788,10 +788,10 @@ void handle_input(map_t *map) {
         settings.camera.y -= mouse_bias.y / settings.zoom;
     }
 
-    if (IsMouseButtonDown(mouse_bindings[ARROW_INTERACT])) {
-        int button_x = round(settings.camera.x + (settings.last_mouse_position.x) / settings.zoom);
-        int button_y = round(settings.camera.y + (settings.last_mouse_position.y) / settings.zoom);
-        arrow_t *arrow = map_get(map, button_x, button_y);
+    if (IsMouseButtonReleased(mouse_bindings[ARROW_INTERACT])) {
+        const int button_x = (int) roundf(settings.camera.x + settings.last_mouse_position.x / settings.zoom);
+        const int button_y = (int) roundf(settings.camera.y + settings.last_mouse_position.y / settings.zoom);
+        const arrow_t* arrow = map_get(map, button_x, button_y);
 
         // FIXME: doesn't work for Button
         if (arrow->type == AR_BUTTON || arrow->type == AR_DIRECTIONAL_BUTTON) {
