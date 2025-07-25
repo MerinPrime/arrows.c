@@ -780,12 +780,8 @@ int main(int argc, char** argv) {
     InitWindow(1900, 1000, "Arrows");
     SetWindowState(FLAG_WINDOW_RESIZABLE);
 
-    Image atlas_img = LoadImage("atlas_dark.png");
-    Texture atlas_dark = LoadTextureFromImage(atlas_img);
-    UnloadImage(atlas_img);
-
-    atlas_img = LoadImage("atlas.png");
-    Texture atlas = LoadTextureFromImage(atlas_img);
+    Texture atlas_dark = LoadTexture("atlas_dark.png");
+    Texture atlas = LoadTexture("atlas.png");
 
     SetTargetFPS(60);
     while(!WindowShouldClose()) {
