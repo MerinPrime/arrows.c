@@ -617,7 +617,8 @@ enum InputEvent {
     ZOOM_RESET,
     SIGNALS_REMOVE,
     PAUSE,
-    MAP_MENU
+    MAP_MENU,
+    TICK_STEP,
 };
 
 KeyboardKey keybindings[] = {
@@ -651,7 +652,8 @@ KeyboardKey keybindings[] = {
     [ZOOM_RESET] = KEY_EQUAL,
     [SIGNALS_REMOVE] = KEY_N,
     [PAUSE] = KEY_SPACE,
-    [MAP_MENU] = KEY_ESCAPE
+    [MAP_MENU] = KEY_ESCAPE,
+    [TICK_STEP] = KEY_ENTER,
 };
 
 MouseButton mouse_bindings[] = {
@@ -767,6 +769,10 @@ void handle_input(map_t *map) {
     }
     if (IsKeyPressed(keybindings[MAP_MENU])) {
         printf("key pressed\n");
+    }
+
+    if (IsKeyPressed(keybindings[TICK_STEP])) {
+        map_update(map);
     }
 
     if (IsMouseButtonDown(mouse_bindings[MOVE])) {
