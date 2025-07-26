@@ -690,20 +690,34 @@ void handle_input(map_t *map) {
     if (IsKeyDown(ZOOM_IN)) {
         const float screen_center_x = (float) GetScreenWidth() / 2.0f;
         const float screen_center_y = (float) GetScreenHeight() / 2.0f;
-        const float dx = screen_center_x / settings.zoom - screen_center_x / (settings.zoom * ZOOM_FACTOR);
-        const float dy = screen_center_y / settings.zoom - screen_center_y / (settings.zoom * ZOOM_FACTOR);
-        settings.zoom *= ZOOM_FACTOR;
+        const float new_zoom = settings.zoom * ZOOM_FACTOR;
+        const float dx = screen_center_x / settings.zoom - screen_center_x / new_zoom;
+        const float dy = screen_center_y / settings.zoom - screen_center_y / new_zoom;
         settings.camera.x += dx;
         settings.camera.y += dy;
+        settings.zoom = new_zoom;
     }
     if (IsKeyDown(ZOOM_OUT)) {
         const float screen_center_x = (float) GetScreenWidth() / 2.0f;
         const float screen_center_y = (float) GetScreenHeight() / 2.0f;
-        const float dx = screen_center_x / settings.zoom - screen_center_x / (settings.zoom / ZOOM_FACTOR);
-        const float dy = screen_center_y / settings.zoom - screen_center_y / (settings.zoom / ZOOM_FACTOR);
-        settings.zoom /= ZOOM_FACTOR;
+        const float new_zoom = settings.zoom / ZOOM_FACTOR;
+        const float dx = screen_center_x / settings.zoom - screen_center_x / new_zoom;
+        const float dy = screen_center_y / settings.zoom - screen_center_y / new_zoom;
         settings.camera.x += dx;
         settings.camera.y += dy;
+        settings.zoom = new_zoom;
+    }
+    const float wheel_move = GetMouseWheelMove();
+    if (wheel_move != 0.0f)
+    {
+        const float screen_center_x = (float) GetScreenWidth() / 2.0f;
+        const float screen_center_y = (float) GetScreenHeight() / 2.0f;
+        const float new_zoom = settings.zoom + wheel_move;
+        const float dx = screen_center_x / settings.zoom - screen_center_x / new_zoom;
+        const float dy = screen_center_y / settings.zoom - screen_center_y / new_zoom;
+        settings.camera.x += dx;
+        settings.camera.y += dy;
+        settings.zoom = new_zoom;
     }
     if (IsKeyDown(KEY_LEFT_SHIFT) && IsKeyPressed(ZOOM_RESET)) {
         settings.zoom = DEFAULT_ZOOM;
