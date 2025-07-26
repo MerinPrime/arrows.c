@@ -761,6 +761,12 @@ void handle_input(map_t *map) {
     settings.last_mouse_position = GetMousePosition();
 }
 
+void set_threads_count(const int new_threads_count)
+{
+    settings.number_of_threads = new_threads_count;
+    omp_set_num_threads(new_threads_count);
+}
+
 int main(int argc, char** argv) {
     map_t map = { 0 };
     map_init(&map);
@@ -774,8 +780,7 @@ int main(int argc, char** argv) {
 #else
     const int MAX_NUMBER_OF_THREADS = omp_get_max_threads();
 #endif
-    settings.number_of_threads = MAX_NUMBER_OF_THREADS;
-    omp_set_num_threads(settings.number_of_threads);
+    set_threads_count(MAX_NUMBER_OF_THREADS);
 
     InitWindow(1900, 1000, "Arrows");
     SetWindowState(FLAG_WINDOW_RESIZABLE);
@@ -783,8 +788,8 @@ int main(int argc, char** argv) {
     SetWindowIcon(icon);
     UnloadImage(icon);
 
-    Texture atlas_dark = LoadTexture("atlas_dark.png");
-    Texture atlas = LoadTexture("atlas.png");
+    const Texture atlas_dark = LoadTexture("atlas_dark.png");
+    const Texture atlas = LoadTexture("atlas.png");
 
     SetTargetFPS(60);
     while(!WindowShouldClose()) {
@@ -880,22 +885,26 @@ int main(int argc, char** argv) {
             }
         }
         DrawRectangle(GetScreenWidth(), GetScreenHeight(), -250, -40, ColorAlpha(GetColor(GuiGetStyle(0, BACKGROUND_COLOR)), UI_BACKGROUND_ALPHA));
-        float slider = settings.number_of_threads;
-        GuiSlider((Rectangle){GetScreenWidth()-100, GetScreenHeight()-20, 100, 20}, GuiIconText(ICON_CPU, TextFormat("Number of threads: %d", settings.number_of_threads)), "", &slider, 1, MAX_NUMBER_OF_THREADS);
-        if ((int)slider != settings.number_of_threads) {
-            omp_set_num_threads((int)slider);
-            settings.number_of_threads = (int)slider;
-            slider = (float)settings.number_of_threads;
+
+        float slider = (float) settings.number_of_threads;
+        GuiSlider( (Rectangle) { (float) GetScreenWidth() - 100, (float) GetScreenHeight() - 20, 100, 20 },
+            GuiIconText(ICON_CPU, TextFormat("Number of threads: %d", settings.number_of_threads)),
+            "", &slider, 1.0f, (float) MAX_NUMBER_OF_THREADS);
+
+        if ((int) slider != settings.number_of_threads) {
+            set_threads_count((int) slider);
         }
-        GuiSlider((Rectangle){GetScreenWidth()-100, GetScreenHeight()-40, 100, 20}, GuiIconText(ICON_CLOCK, TextFormat("TPS: %.3f", settings.tps)), "", &settings.tps, 1, MAX_TPS);
-        /* if (GetFPS() < 10) { */
-        /*     settings.tps /= 2.; */
-        /* } */
-        // ---- GUI ----
+
+        GuiSlider((Rectangle) { (float) GetScreenWidth() - 100, (float) GetScreenHeight() - 40, 100, 20},
+            GuiIconText(ICON_CLOCK, TextFormat("TPS: %.3f", settings.tps)),
+            "", &settings.tps, 1, MAX_TPS);
+
         handle_input(&map);
         EndDrawing();
     }
 
+    UnloadTexture(atlas_dark);
+    UnloadTexture(atlas);
     CloseWindow();
 
     return 0;
