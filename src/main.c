@@ -16,6 +16,7 @@
 
 #include "arrow_type.h"
 #include "chunk.h"
+#include "signal_type.h"
 
 #define UNLOAD_TIMER_MAX 5
 #define MAX_TPS 10000
@@ -37,21 +38,6 @@ typedef struct Settings {
     bool pause;
 } settings_t;
 settings_t settings = { 0 };
-
-enum SignalType {
-    S_NONE,
-
-    // used by blocker
-    S_BLOCK,
-
-    S_RED,
-    S_BLUE,
-    S_YELLOW,
-    S_ORANGE,
-
-    // used by delay
-    S_DELAY_AFTER_RED,
-};
 
 enum Direction {
     D_NORTH,
