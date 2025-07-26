@@ -779,6 +779,9 @@ int main(int argc, char** argv) {
 
     InitWindow(1900, 1000, "Arrows");
     SetWindowState(FLAG_WINDOW_RESIZABLE);
+    const Image icon = LoadImage("icon.png");
+    SetWindowIcon(icon);
+    UnloadImage(icon);
 
     Texture atlas_dark = LoadTexture("atlas_dark.png");
     Texture atlas = LoadTexture("atlas.png");
