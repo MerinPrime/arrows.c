@@ -242,6 +242,7 @@ void map_arrow_recompile(map_t* map, arrow_t* arrow, const int x, const int y) {
     } else if (entry_point && !arrow->entry_point) {
         arrpush(map->entry_points, arrow);
     }
+    arrow->entry_point = entry_point;
 }
 
 void map_recompile(map_t* map) {
@@ -319,10 +320,10 @@ void map_load(map_t* map, buffer_t* buffer) {
 
 static inline void update_arrow(arrow_t* arrow, uint32_t* seed)
 {
-#define ar_random() ({ \
-*seed = *seed * 1664525u + 1013904223u; \
-*seed; \
-})
+    #define ar_random() ({ \
+        *seed = *seed * 1664525u + 1013904223u; \
+        *seed; \
+    })
     switch (arrow->type)
     {
     case AR_EMPTY:

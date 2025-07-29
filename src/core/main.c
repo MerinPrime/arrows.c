@@ -61,7 +61,6 @@ int main(int argc, char** argv) {
     while(!WindowShouldClose()) {
         tps_acc += now() - prev_time;
         prev_time = now();
-        printf("%f %i %i\n", tps_acc, tps, tick);
         if (tps_acc > 0.5)
         {
             tps_acc = 0.0;

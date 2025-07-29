@@ -12,23 +12,24 @@
 
 typedef struct arrow_t
 {
-    ArrowType type;
-    Direction direction;
-    bool flipped;
+    struct arrow_t* edges[MAX_EDGES];
+    struct arrow_t* detectors[MAX_DETECTORS];
+
+    uint8_t type;
+    uint8_t direction;
 
     uint8_t signal_count;
     uint8_t block_count;
-    SignalType signal;
-    SignalType detector_signal;
 
-    SignalType last_signal;
+    uint8_t signal;
+    uint8_t detector_signal;
+    uint8_t last_signal;
 
+    bool flipped;
     bool entry_point;
     bool changed;
 
-    struct arrow_t* edges[MAX_EDGES];
     uint8_t edges_count;
-    struct arrow_t* detectors[MAX_DETECTORS];
     uint8_t detectors_count;
 } arrow_t;
 
