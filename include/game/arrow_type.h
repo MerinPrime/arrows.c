@@ -1,7 +1,7 @@
 #ifndef ARROW_TYPE_H
 #define ARROW_TYPE_H
 
-enum ArrowType {
+typedef enum {
     AR_EMPTY,
     AR_ARROW,
     AR_SOURCE,
@@ -27,6 +27,6 @@ enum ArrowType {
     AR_LEVEL_SOURCE,
     AR_LEVEL_TARGET,
     AR_DIRECTIONAL_BUTTON,
-};
+} ArrowType;
 
 #endif
