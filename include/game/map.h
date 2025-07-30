@@ -22,7 +22,8 @@ typedef struct {
 //       `arrow_t** changed_red_source`, `arrow_t** changed_red_arrow`, etc.
 //       to remove the switch in update_arrow.
 // TODO: Implement cycle and timer optimizations from layers-dlc
-// TODO: May be try make a JIT for complex arrow structures?
+// TODO: May be try make a JIT for arrow structures?
+//       X -> NOT -> NOT -> Y to X -> 1 -> 2 -> Y
 // TODO: Path compilation? Idk how, but i need to try this idea in layers-dlc
 //       So i think this can be maked using delayed signal update
 //       X->1->2->3->4->5->Y compile path to single arrow X->PATH->Y
