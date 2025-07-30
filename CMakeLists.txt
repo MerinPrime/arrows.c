@@ -5,7 +5,7 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS ON)
 
-add_compile_options(-O3 -Wall -g -fopenmp)
+add_compile_options(-O3 -march=native -ffast-math -Wall -g -fopenmp)
 
 include_directories(${CMAKE_SOURCE_DIR}/lib/include)
 include_directories(${CMAKE_SOURCE_DIR}/include)
