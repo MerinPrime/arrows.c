@@ -36,7 +36,7 @@ typedef struct {
 //       Also if PATH does not update signal of Y we can skip storing of Y in changed_nodes
 //       PATH must be contain only arrows like RED_ARROW, BLUE_ARROW, RED_SPLITTER_UP_RIGHT etc.
 // TODO: Like path compilation i think to make arrow union
-//       It will optimize structures like pixels
+//       It will optimize structures like pixels or compile branches to single path
 //       This refers to JIT
 // TODO: Also i think about complex graph structure, like back links for arrow
 //       Idk how good this idea btw in my mind this looks like Babel AST
