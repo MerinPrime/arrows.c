@@ -36,6 +36,7 @@ typedef struct {
 //       Tick 4: PATH = 00000 | Y = 1
 //       Also if PATH does not update signal of Y we can skip storing of Y in changed_nodes
 //       PATH must be contain only arrows like RED_ARROW, BLUE_ARROW, RED_SPLITTER_UP_RIGHT etc.
+//       Delay arrow is path with 2 arrows?
 // TODO: Like path compilation i think to make arrow union
 //       It will optimize structures like pixels or compile branches to single path
 //       This refers to JIT
