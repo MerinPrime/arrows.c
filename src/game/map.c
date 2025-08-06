@@ -120,6 +120,7 @@ static void _store_detector(map_t* map, arrow_t* edges[], uint8_t* count, const 
     const point_t back_pos = get_pos_relative(map, pos.x, pos.y, 1, 0, arrow->direction, arrow->flipped);
 
     if (back_pos.x != x || back_pos.y != y) return;
+    if (arrow->type != AR_DETECTOR) return;
     edges[(*count)++] = arrow;
 }
 
